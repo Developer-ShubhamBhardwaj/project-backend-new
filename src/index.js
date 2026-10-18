@@ -1,11 +1,11 @@
-import dotenv from "dotenv";
+import 'dotenv/config'
 import mongoose from "mongoose";
 import { DB_NAME } from "./constants.js";
 
 import { DB_CALL } from "./db/index.js";
 import app from "./app.js"
 
-dotenv.config({path:'./env'})
+
 DB_CALL()
 .then(()=>{
     app.listen(process.env.PORT || 2000 ,

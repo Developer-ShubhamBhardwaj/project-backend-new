@@ -4,7 +4,7 @@ import { DB_NAME } from "../constants.js";
       try {
         const connectionInstance =  await mongoose.connect( `${process.env.MONGODB_URI}/${DB_NAME}`)
         console.log(`\n mongodb connected !! DB HOST:${connectionInstance.connection.host}`)
-    } catch (error) {console.log("ERROR:502:An error heppened in database connection");
+    } catch (error) {console.log(`ERROR:502:An error heppened in database connection\n${error}`);
         process.exit(1);
         
     }
