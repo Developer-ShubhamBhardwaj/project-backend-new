@@ -1,46 +1,29 @@
 import { v2 as cloudinary } from 'cloudinary';
 import fs from "fs"
 
-(async function() {
+
 
     // Configuration
     cloudinary.config({ 
         cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
         api_key: process.env.CLOUDINARY_API_KEY, 
-        api_secret: process.env.CLOUDINARY_API_SECRET,   // Click 'View API Keys' above to copy your API secret
-    });
+        api_secret: process.env.CLOUDINARY_API_SECRET,
+        
+    })  
     
     // Upload an image
-     const uploadOnCloudinary = async function(product_link){
-        try { if(!product_link) return null
+    const uploadOnCloudinary = async function(localFilePath){
+        try { if(!localFilePath) return null
             //upload file on claudinary
-           const upload_response = await cloudinary.v2.uploader.upload(product_link,product,)
+           const upload_response = await cloudinary.uploader.upload(localFilePath,product,)
             return upload_response
         } catch (error) {
             console.log(error);
             return error
-            
-        }
-       
-     }
+        }    
+        console.log(uploadOnCloudinary);
+    }
     
-    console.log(uploadOnCloudinary);
+    export {uploadOnCloudinary}
     
-    // Optimize delivery by resizing and applying auto-format and auto-quality
-    const optimizeUrl = cloudinary.url('shoes', {
-        fetch_format: 'auto',
-        quality: 'auto'
-    });
-    
-    console.log(optimizeUrl);
-    
-    // Transform the image: auto-crop to square aspect_ratio
-    const autoCropUrl = cloudinary.url('shoes', {
-        crop: 'auto',
-        gravity: 'auto',
-        width: 500,
-        height: 500,
-    });
-    
-    console.log(autoCropUrl);    
-})();
+      

@@ -1,8 +1,10 @@
 const asynchandler = (requesthandler)=>{
     return async (req,res,next)=>{
-        promise.resolve(await requesthandler(req,res,next)).catch((err)=>next(err))
+        Promise.resolve(await requesthandler(req,res,next))
+        .catch((err)=>next(err))
     }
 }
+
 
 
 

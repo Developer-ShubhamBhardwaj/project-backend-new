@@ -6,3 +6,4 @@
         this.success = statuscode<400
     }
 }
+export{ apiresponse }
